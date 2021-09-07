@@ -2,4 +2,3 @@
 #include "smgame/assert.h"
 
 Test Hello();
-

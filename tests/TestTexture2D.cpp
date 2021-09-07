@@ -9,9 +9,9 @@
 namespace test {
     using namespace oogl;
 	TestTexture2D::TestTexture2D(std::shared_ptr<Window> window):Test(window),
+		rect(window, "res/textures/ChernoLogo.png", {200, 200}),
 		tri(window, "res/textures/text.jpg", { {0.0f, 0.0f}, {100.0f, 0.0f}, {100.0f, 100.0f} }, 
-											 { {0.0f, 0.0f}, {1.0f, 0.0f}, {1.0f, 1.0f} }),
-		rect(window, "res/textures/ChernoLogo.png", {200, 200})
+											 { {0.0f, 0.0f}, {1.0f, 0.0f}, {1.0f, 1.0f} })
 	{
 		tri.setPosition(200, 200);
 		rect.setPosition(200, 200);
@@ -45,7 +45,7 @@ namespace test {
         ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		//int i = 100;
 		//while (i--) {
-		ImGui::ImageButton((void*)oogl::getTextureMgr().get("res/textures/text.jpg")->ID(), { 50, 50 });
+		ImGui::ImageButton((void*)(unsigned long)oogl::getTextureMgr().get("res/textures/text.jpg")->ID(), { 50, 50 });
 		//}
 	}
 }

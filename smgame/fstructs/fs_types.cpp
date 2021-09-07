@@ -1,4 +1,3 @@
 #include "fs_types.h"
 
-namespace smgame {
-}
+namespace smgame {}

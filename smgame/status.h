@@ -1,6 +1,4 @@
 #pragma once
 namespace smgame {
-	class status {
-
-	};
-}
+class status {};
+} // namespace smgame

@@ -2,20 +2,20 @@
 
 #include "VertexBuffer.h"
 namespace oogl {
-	class VertexBufferLayout;
+class VertexBufferLayout;
 
-	class VertexArray
-	{
-	private:
-		unsigned int m_RedererID;
-	public:
-		VertexArray();
-		~VertexArray();
+class VertexArray {
+  private:
+    unsigned int m_RedererID;
 
-		void AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout);
+  public:
+    VertexArray();
+    ~VertexArray();
 
-		void Bind() const;
-		void Unbind() const;
-	};
+    void AddBuffer(const VertexBuffer &vb, const VertexBufferLayout &layout);
 
-}
+    void Bind() const;
+    void Unbind() const;
+};
+
+} // namespace oogl

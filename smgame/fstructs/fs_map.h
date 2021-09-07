@@ -1,7 +1,5 @@
 #pragma once
 
 namespace smgame {
-	class FsMap {
-
-	};
-}
+class FsMap {};
+} // namespace smgame
