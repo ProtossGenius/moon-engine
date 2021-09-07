@@ -8,7 +8,7 @@
 #include "imgui/imgui_impl_opengl3.h"
 namespace oogl {
 
-const char *glsl_version = "#version 300";
+const char *glsl_version = "#version 130";
 
 struct GlfwInit {
     GlfwInit() {
@@ -37,7 +37,7 @@ struct IMGuiInit {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
         // Setup Dear ImGui style
-        //        ImGui_ImplOpenGL3_Init(glsl_version);
+        ImGui_ImplOpenGL3_Init(glsl_version);
 
 #ifdef _WIN32
         ImFontConfig Config;

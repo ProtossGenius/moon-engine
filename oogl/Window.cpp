@@ -58,6 +58,7 @@ Window::Window(int width, int height, const char *title, GLFWmonitor *monitor,
                           });
 
     InitGlew();
+    InitImGui();
     GLCall(glEnable(GL_BLEND));
     GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
     useThis();

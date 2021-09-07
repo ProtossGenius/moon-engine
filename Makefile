@@ -6,7 +6,8 @@ prebuild:
 debug:
 
 qrun:
-	cd build && cmake .. && make -j16 && gdb moon-engine
+	cp -r ./res ./build/
+	cd build && cmake .. && make -j16 && ./moon-engine
 test:
 
 install:
