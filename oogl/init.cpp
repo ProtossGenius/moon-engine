@@ -17,7 +17,10 @@ struct GlfwInit {
         }
     }
 
-    ~GlfwInit() { glfwTerminate(); }
+    ~GlfwInit() {
+        //@SMIST console.log("[warn] may cause some error, it should not in here.")
+        glfwTerminate();
+    }
 };
 
 void InitGlfw() { static GlfwInit it; }

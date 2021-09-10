@@ -1,5 +1,6 @@
 ##Tail
 prebuild:
+	smist -exts ".cpp,.c,.h,.hpp,.cc"
 	python3 ./format
 	smdcatalog	
 

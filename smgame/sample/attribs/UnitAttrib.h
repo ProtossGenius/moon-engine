@@ -3,7 +3,7 @@
 // Author : ProtossGenius
 // tools path: cmd/attribs/attribs.go
 
-#include "sample_attributes.h"
+#include "smgame/sample/sample_attributes.h"
 #include "smgame/attributes_itf.h"
 
 namespace smgame_sample {
