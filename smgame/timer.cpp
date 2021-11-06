@@ -2,19 +2,17 @@
 
 namespace smgame {
 void timer::update() {
-    m_now = clock();
-    {
-        std::lock_guard<std::mutex> _(lock);
-        for (auto iter = m_cache.begin(); iter != m_cache.end();) {
-            m_tasks.insert({iter->first, iter->second});
-            m_cache.erase(iter);
-        }
-    }
+	while (true) {
+		std::lock_guard<std::mutex> _ (lock);
+    	auto m_now = clock();
+		if (m_tasks.empty()){break;}
+		task_pair p = m_tasks.top();
+		if (p.first < m_now){
+			m_tasks.pop();
+			p.second();
 
-    for (auto iter = m_tasks.begin(); iter != m_tasks.end();) {
-        if (iter->first > m_now) break;
-        iter->second();
-        m_tasks.erase(iter++);
-    }
+		}
+	}
 }
+
 } // namespace smgame

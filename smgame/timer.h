@@ -1,8 +1,10 @@
 #pragma once
 #include <ctime>
 #include <functional>
-#include <map>
+#include <queue>
 #include <mutex>
+#include <thread>
+#include <vector>
 
 namespace smgame {
 enum {
@@ -13,27 +15,38 @@ enum {
     Week   = 7 * Day,
 };
 
+typedef std::pair<clock_t, std::function<void()>> task_pair;
+
+struct next_task {
+bool operator() (const task_pair& lhs,
+		const task_pair& rhs) const {
+	return lhs.first < rhs.first;
+}
+};
+
 // it can accept the task what will run some-time later.
 class timer {
   public:
     timer()
-        : m_now(clock()) {}
+        :m_trd([this](){this->update();}){
+			m_trd.detach();
+		}
     ~timer() {}
     timer(const timer &) = delete;
     timer(timer &&)      = delete;
 
   public:
-    clock_t Now() { return m_now; }
-    void    update(); // upate time now.
     void    addTask(clock_t t, std::function<void()> task) {
         std::lock_guard<std::mutex> _(lock);
-        m_cache.insert({t, task});
+        m_tasks.push({t, task});
     }
 
   private:
-    clock_t                                       m_now;
-    std::multimap<clock_t, std::function<void()>> m_tasks, m_cache;
+    void    update(); 
+  private:
+    std::priority_queue<		task_pair, std::vector<task_pair>,		next_task	   	> m_tasks;
     std::mutex                                    lock;
+	std::thread m_trd;
 };
 
 inline timer &GlobalTimer() {

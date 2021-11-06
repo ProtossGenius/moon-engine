@@ -88,7 +88,6 @@ void Window::resize(int width, int height) {
     m_width  = width;
     m_height = height;
     using namespace std;
-    cout << " resize (" << width << ", " << height << ")" << endl;
     m_drawProj =
         glm::ortho(0.0f, float(width), 0.0f, float(height), -1.0f, 1.0f);
     m_scale = {float(width) / float(m_designWidth),
