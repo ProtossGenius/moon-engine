@@ -8,7 +8,7 @@ debug:
 
 qrun:
 	cp -r ./res ./build/
-	cd build && cmake .. && make -j16 && ./moon-engine
+	cd build && cmake .. && make -j$(nproc) && ./moon-engine
 test:
 
 install:

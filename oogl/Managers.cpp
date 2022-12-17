@@ -20,7 +20,7 @@ template <typename Type> class OManager : public Manager<Type> {
     }
 
     std::shared_ptr<Type> set(const std::string &   path,
-                              std::shared_ptr<Type> val) {
+                              std::shared_ptr<Type> val) override {
         m_tstore[ path ] = val;
         return val;
     }

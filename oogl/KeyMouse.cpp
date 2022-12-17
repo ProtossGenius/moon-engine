@@ -1,4 +1,4 @@
-#include "KeyMouse.h"
+#include "oogl/KeyMouse.h"
 namespace oogl {
 class NilKeyMouse : public KeyMouseItf {
   public:
@@ -6,6 +6,7 @@ class NilKeyMouse : public KeyMouseItf {
     void KeyBoards(int key, int scancode, int action, int mode) override {}
     void MouseScroll(double offset) override {}
     void Update() override {}
+
 };
 } // namespace oogl
 

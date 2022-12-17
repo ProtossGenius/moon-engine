@@ -1,7 +1,6 @@
 #ifndef ASSERT_H_XATLNPCJ
 #define ASSERT_H_XATLNPCJ
 #include <sstream>
-#define Test void
 #define SMSTR(str) #str
 
 #define __POSINFO(apd)                                                         \

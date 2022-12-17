@@ -9,6 +9,7 @@ class KeyMouseItf {
         : m_MousePosX(0)
         , m_MousePosY(0) {}
 
+    virtual ~KeyMouseItf(){}
   public:
     virtual void MouseButton(int button, int action, int mods)          = 0;
     virtual void KeyBoards(int key, int scancode, int action, int mode) = 0;
