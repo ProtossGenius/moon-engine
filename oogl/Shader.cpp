@@ -9,8 +9,8 @@
 
 namespace oogl {
 Shader::Shader(const std::string filepath)
-    : m_FilePath(filepath)
-    , m_RendererID(0) {
+    : m_RendererID(0)
+    , m_FilePath(filepath) {
     ShaderProgramSource source = ParseShader(filepath);
     m_RendererID = CreateShader(source.VertexSource, source.FregmentSource);
 }
@@ -66,7 +66,7 @@ ShaderProgramSource Shader::ParseShader(const std::string &filePath) {
 unsigned int Shader::CompileShader(unsigned int       type,
                                    const std::string &source) {
     unsigned int id  = glCreateShader(type);
-    const char * src = source.c_str();
+    const char  *src = source.c_str();
     GLCall(glShaderSource(id, 1, &src, nullptr));
     GLCall(glCompileShader(id));
 

@@ -17,8 +17,8 @@ void triangle4draw::onDraw(const glm::vec3 &translation, float rotationZ,
     getTexture().Bind();
     auto      envScale = getWindow().getScale();
     glm::mat4 model    = glm::translate(
-        glm::mat4(1.0f), {translation.x * envScale.x,
-                          translation.y * envScale.y, translation.z});
+           glm::mat4(1.0f), {translation.x * envScale.x,
+                             translation.y * envScale.y, translation.z});
     glm::mat4 mvp =
         getWindow().getDrawProj() * getWindow().getDrawView() * model;
     mvp =
@@ -37,7 +37,7 @@ triangle4draw::triangle4draw(std::shared_ptr<Window>  win,
     init(win, texture, showPos, loadPos);
 }
 triangle4draw::triangle4draw(std::shared_ptr<Window> win,
-                             const std::string &     texturePath,
+                             const std::string      &texturePath,
                              const triangle &showPos, const triangle &loadPos)
     : m_VAO() {
     auto texture = getTextureMgr().get(texturePath);
@@ -72,12 +72,11 @@ void triangle4draw::init(std::shared_ptr<Window>  win,
     m_loadPos = loadPos;
     this->setWindow(win);
     this->setTexture(texture);
+    setShowPos(showPos);
 
     GLCall(glEnable(GL_BLEND));
     GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
     this->setShader(getShaderMgr().get("res/shaders/Basic.shader"));
-
-    setShowPos(showPos);
 
     setIndexBuffer(std::make_shared<IndexBuffer>(indices, 6));
 
