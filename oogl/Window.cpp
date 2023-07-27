@@ -10,8 +10,11 @@ static std::map<uint64_t, Window *> winRegs;
 Window::Window(int width, int height, const char *title, GLFWmonitor *monitor,
                GLFWwindow *share)
     : m_drawProj(
-          glm::ortho(0.0f, float(width), 0.0f, float(height), -1.0f, 1.0f))
-    , m_drawView(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)))
+          glm::perspective(1.0472f, (float) width / height, 0.1f, 1000.0f)
+          //          glm::ortho(0.0f, float(width), 0.0f, float(height),
+          //          -1.0f, 1.0f)
+          )
+    , m_drawView(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, -500.0f)))
     , m_scale(1.0f, 1.0f, 1.0f)
     , m_window(nullptr)
     , m_swapInterval(1)
