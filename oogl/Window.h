@@ -12,7 +12,7 @@ class Window {
            GLFWwindow *share);
     Window(int width, int height, const char *title)
         : Window(width, height, title, NULL, NULL) {}
-    Window(const Window &) = delete;
+    Window(const Window &)            = delete;
     Window &operator=(const Window &) = delete;
 
   private: // Callback functions.
@@ -68,7 +68,7 @@ class Window {
     GLFWwindow *m_window;
     int         m_swapInterval;
     GLclampf    m_cRed = 0, m_cGreen = 0, m_cBlue = 1, m_cAlpha = 1;
-    Renderer &  m_renderer = Renderer::Instance;
+    Renderer   &m_renderer = Renderer::Instance;
     int         m_width, m_height;
     const int   m_designWidth, m_designHeight;
     std::shared_ptr<KeyMouseItf> m_KeyMouse;

@@ -29,31 +29,31 @@ class DrawUnit {
         m_translation.y = y;
     }
     // rotation.
-    void setRotationAngle(float angleZ) { m_rotation = angleZ; }
+    void setRotationAngle(glm::vec3 rotation) { m_rotation = rotation; }
     // scale resize .
     void setScale(float x, float y, float z) { m_scale = glm::vec3(x, y, z); }
-    virtual void    draw() = 0;
-    const glm::vec3 getScale() const { return m_scale; }
-    float           getRotationAngle() const { return m_rotation; }
-    const glm::vec3 getTranslation() const { return m_translation; }
-    const float     getTransparency() const { return m_transparency; }
-    glm::vec3 *     getTranslationPtr() { return &m_translation; }
-    glm::vec3 &     getTranslationRef() { return m_translation; }
-    void            setTranslation(const glm::vec3 &translation) {
-        m_translation = translation;
+    virtual void     draw() = 0;
+    const glm::vec3  getScale() const { return m_scale; }
+    const glm::vec3 &getRotationAngle() const { return m_rotation; }
+    const glm::vec3 &getTranslation() const { return m_translation; }
+    const float      getTransparency() const { return m_transparency; }
+    glm::vec3       *getTranslationPtr() { return &m_translation; }
+    glm::vec3       &getTranslationRef() { return m_translation; }
+    void             setTranslation(const glm::vec3 &translation) {
+                    m_translation = translation;
     }
     void setTransparency(float transparency) { m_transparency = transparency; }
 
   protected:
     glm::vec3 m_translation;
-    float     m_rotation;
+    glm::vec3 m_rotation;
     glm::vec3 m_scale;
     float     m_transparency;
 };
 
 class Drawable {
   private:
-    virtual void onDraw(const glm::vec3 &translation, float rotationZ,
+    virtual void onDraw(const glm::vec3 &translation, glm::vec3 rotation,
                         const glm::vec3 &scale, float transparency = 1.0f) = 0;
 
   public:
@@ -63,7 +63,7 @@ class Drawable {
         draw(da.getTranslation(), da.getRotationAngle(), da.getScale(),
              da.getTransparency());
     }
-    void draw(const glm::vec3 &translation, float rotation,
+    void draw(const glm::vec3 &translation, glm::vec3 rotation,
               const glm::vec3 &scale, float transparency) {
         onDraw(translation, rotation, scale, transparency);
     }

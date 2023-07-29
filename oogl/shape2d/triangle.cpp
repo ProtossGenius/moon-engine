@@ -11,7 +11,7 @@ namespace oogl {
 namespace shape2d {
 float        positions[ 12 ];
 unsigned int triangle4draw::indices[] = {0, 1, 2};
-void triangle4draw::onDraw(const glm::vec3 &translation, float rotationZ,
+void triangle4draw::onDraw(const glm::vec3 &translation, glm::vec3 rotation,
                            const glm::vec3 &scale, float transparency) {
     getShader().SetUniform1f("c_Transparency", transparency);
     getTexture().Bind();
@@ -21,8 +21,15 @@ void triangle4draw::onDraw(const glm::vec3 &translation, float rotationZ,
                              translation.y * envScale.y, translation.z});
     glm::mat4 mvp =
         getWindow().getDrawProj() * getWindow().getDrawView() * model;
-    mvp =
-        glm::rotate(mvp, glm::radians(rotationZ), glm::vec3(0.0f, 0.0f, 1.0f));
+    if (rotation.x != 0)
+        mvp = glm::rotate(mvp, glm::radians(rotation.x),
+                          glm::vec3(1.0f, 0.0f, 0.0f));
+    if (rotation.y != 0)
+        mvp = glm::rotate(mvp, glm::radians(rotation.y),
+                          glm::vec3(0.0f, 1.0f, 0.0f));
+    if (rotation.z != 0)
+        mvp = glm::rotate(mvp, glm::radians(rotation.z),
+                          glm::vec3(0.0f, 0.0f, 1.0f));
     mvp = glm::scale(mvp, envScale);
     mvp = glm::scale(mvp, scale);
 

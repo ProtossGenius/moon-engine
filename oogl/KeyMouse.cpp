@@ -6,7 +6,6 @@ class NilKeyMouse : public KeyMouseItf {
     void KeyBoards(int key, int scancode, int action, int mode) override {}
     void MouseScroll(double offset) override {}
     void Update() override {}
-
 };
 } // namespace oogl
 
