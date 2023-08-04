@@ -25,13 +25,13 @@ namespace PushHelper {
 template <typename T>
 inline void Push(unsigned int                      count,
                  std::vector<VertexBufferElement> &m_Elements,
-                 unsigned int &                    m_Stride) {
+                 unsigned int                     &m_Stride) {
     throw std::runtime_error("should not call default Push function");
 }
 template <>
 inline void Push<float>(unsigned int                      count,
                         std::vector<VertexBufferElement> &m_Elements,
-                        unsigned int &                    m_Stride) {
+                        unsigned int                     &m_Stride) {
     m_Elements.push_back({GL_FLOAT, count, GL_FALSE});
     m_Stride += count * VertexBufferElement::GetSizeOfType(GL_FLOAT);
 }
@@ -39,7 +39,7 @@ inline void Push<float>(unsigned int                      count,
 template <>
 inline void Push<unsigned int>(unsigned int                      count,
                                std::vector<VertexBufferElement> &m_Elements,
-                               unsigned int &                    m_Stride) {
+                               unsigned int                     &m_Stride) {
     m_Elements.push_back({GL_UNSIGNED_INT, count, GL_FALSE});
     m_Stride += count * VertexBufferElement::GetSizeOfType(GL_UNSIGNED_INT);
 }
@@ -47,7 +47,7 @@ inline void Push<unsigned int>(unsigned int                      count,
 template <>
 inline void Push<unsigned char>(unsigned int                      count,
                                 std::vector<VertexBufferElement> &m_Elements,
-                                unsigned int &                    m_Stride) {
+                                unsigned int                     &m_Stride) {
     m_Elements.push_back({GL_UNSIGNED_BYTE, count, GL_TRUE});
     m_Stride += count * VertexBufferElement::GetSizeOfType(GL_UNSIGNED_BYTE);
 }
