@@ -27,8 +27,8 @@ void TestTexture2D::OnUpdate(float deltaTime) {
     len += tow;
     if (len > 300 || len < 20) tow = -tow;
     // rect.setSize(len, len);
-    rect.setRotationAngle({rangle, -rangle, rangle});
-    tri.setRotationAngle({rangle, 0, 0});
+    //    rect.setRotationAngle({rangle, -rangle, rangle});
+    //   tri.setRotationAngle({rangle, 0, 0});
     tri.setTransparency(static_cast<float>(len) / 300.f);
 }
 void TestTexture2D::OnRender() {

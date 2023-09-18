@@ -1,4 +1,5 @@
 #include "oogl/KeyMouse.h"
+#include <iostream>
 namespace oogl {
 class NilKeyMouse : public KeyMouseItf {
   public:

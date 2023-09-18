@@ -36,7 +36,7 @@ aux_source_directory(. src_files)
 
 add_executable(moon-engine ${src_files})
 
-target_link_libraries(moon-engine stb_image tests unit_test oogl_s2d oogl smgame imgui glfw stb)
+target_link_libraries(moon-engine stb_image tests unit_test oogl_s2d oogl_s3d oogl smgame imgui glfw stb)
 add_subdirectory(oogl)
 add_subdirectory(smgame)
 add_subdirectory(stb_image)
